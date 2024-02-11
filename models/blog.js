@@ -1,12 +1,6 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
-const imageSchema = new Schema(
-    {
-        url: String,
-        filename: String
-    }
-);
 
 imageSchema.virtual('thumbnail').get(function() {
     return this.url.replace('/upload', '/upload/w_200');
@@ -14,7 +8,7 @@ imageSchema.virtual('thumbnail').get(function() {
 
 const blogSchema = new Schema ({
     title: String,
-    images: [imageSchema],
+    images: String,
     content: String,
     Date: {
         type: Date,
