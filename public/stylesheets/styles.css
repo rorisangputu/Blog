@@ -30,3 +30,11 @@
 .blog-img{
     background-image: url();
 }
+
+.buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    /* border: 1px red solid; */
+    width: 20%
+}
