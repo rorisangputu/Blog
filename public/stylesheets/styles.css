@@ -1,0 +1,32 @@
+.navbar{
+    /* border: solid 1px red; */
+}
+
+.custom-container{
+    width: 60%;
+    /* border: solid 2px blue; */
+}
+
+.collapse{
+    /* border: solid 2px blue; */
+    justify-content: flex-end;
+}
+
+.navbar-nav{
+    /* border: solid 1px red; */
+    justify-content: flex-end;
+}
+
+.content-container{
+    /* border: solid 1px red; */
+    
+}
+
+.body-cont{
+    /* border: solid 2px red; */
+    width: 60%;
+}
+
+.blog-img{
+    background-image: url();
+}

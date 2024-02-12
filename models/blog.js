@@ -2,13 +2,13 @@ const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
 
-imageSchema.virtual('thumbnail').get(function() {
-    return this.url.replace('/upload', '/upload/w_200');
-}); 
+// imageSchema.virtual('thumbnail').get(function() {
+//     return this.url.replace('/upload', '/upload/w_200');
+// }); 
 
 const blogSchema = new Schema ({
     title: String,
-    images: String,
+    image: String,
     content: String,
     Date: {
         type: Date,
@@ -26,7 +26,7 @@ const blogSchema = new Schema ({
 // Middleware to automatically update the formattedDate field before saving
 blogSchema.pre('save', function(next) {
     const date = new Date(this.Date);
-    const formattedDate = `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()} ${pad(date.getHours())}:${pad(date.getMinutes())}`;
+    const formattedDate = `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
     this.formattedDate = formattedDate;
     next();
   });
@@ -39,4 +39,4 @@ blogSchema.pre('save', function(next) {
     return number;
   }
 
-module.export = mongoose.model('Blog', blogSchema);
+module.exports = mongoose.model('Blog', blogSchema);
