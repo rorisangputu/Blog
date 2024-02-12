@@ -17,10 +17,10 @@ const blogSchema = new Schema ({
     formattedDate:{
         type: String
     },
-    // author: {
-    //     type: Schema.Types.ObjectId,
-    //     ref: User
-    // }
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }
 })
 
 // Middleware to automatically update the formattedDate field before saving
