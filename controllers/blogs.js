@@ -28,7 +28,6 @@ module.exports.showBlog = async (req, res) =>{
     res.render('blogs/show', {blog})
 }
 
-
 //get - '/blogs/:id/edit' 
 module.exports.editBlog = async (req, res) =>{
     const {id} = req.params;

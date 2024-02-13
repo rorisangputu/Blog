@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const passportLocalMongoose = require('passport-local-mongoose');
 
-const UserSchema = new Schema({
+const adminSchema = new Schema({
     email: {
         type: String,
         required: true,
@@ -10,8 +10,6 @@ const UserSchema = new Schema({
     }
 });
 
-UserSchema.plugin(passportLocalMongoose);
+adminSchema.plugin(passportLocalMongoose);
 
-module.exports = mongoose.model('User', UserSchema);
-
-//CREATE USER INFRASTRUCTER!!!! AND CONFIGURE SESSIONS
+module.exports = mongoose.model('Admin', adminSchema);

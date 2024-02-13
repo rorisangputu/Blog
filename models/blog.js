@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Comment = require('./comments');
 const {Schema} = mongoose;
 
 
@@ -19,7 +20,11 @@ const blogSchema = new Schema ({
     },
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'Admin'
+    },
+    comments: {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }
 })
 
@@ -29,14 +34,26 @@ blogSchema.pre('save', function(next) {
     const formattedDate = `${pad(date.getDate())}/${pad(date.getMonth() + 1)}/${date.getFullYear()}`;
     this.formattedDate = formattedDate;
     next();
-  });
+});
   
-  // Function to pad single digit numbers with a leading zero
-  function pad(number) {
+// Function to pad single digit numbers with a leading zero
+function pad(number) {
     if (number < 10) {
       return '0' + number;
     }
     return number;
+}
+
+//Delete comments function 
+blogSchema.post('findOneAndDelete', async function (doc){
+  if (doc) {
+      await Comment.deleteMany({
+          _id:{
+              $in: doc.reviews
+          }
+      })
   }
+})
+
 
 module.exports = mongoose.model('Blog', blogSchema);
