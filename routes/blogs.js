@@ -9,7 +9,7 @@ router.route('/')
     .post(catchAsync(blogs.createNewBlog));
 
 router.route('/new')
-    .get(blogs.newBlog)
+    .get( blogs.newBlog)
 
 router.route('/:id')
     .get(catchAsync(blogs.showBlog))

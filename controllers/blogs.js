@@ -1,6 +1,7 @@
 const Blog = require('../models/blog'); //Blog model
 
 
+
 //BLOG ROUTES
 //View all blogs
 // get - '/blogs'
@@ -11,12 +12,16 @@ module.exports.index =  async (req, res) => {
 
 // get - '/blogs/new', 
 module.exports.newBlog = (req, res) => {
-    res.render('blogs/new')
+    const isAdmin = req.user && req.user.isAdmin;
+    console.log(req.params);
+    res.render('blogs/new', {isAdmin})
 }
 
 //post - '/blogs'
 module.exports.createNewBlog = async(req ,res, next) =>{
     const blog = new Blog(req.body);
+    blog.author = req.user._id
+    console.log(blog.author);
     await blog.save();
     res.redirect('/blogs');
 }

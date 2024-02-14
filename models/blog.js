@@ -20,11 +20,11 @@ const blogSchema = new Schema ({
     },
     author: {
         type: Schema.Types.ObjectId,
-        ref: 'Admin'
+        ref: 'User'
     },
     comments: {
       type: Schema.Types.ObjectId,
-      ref: 'User'
+      ref: 'Comment'
     }
 })
 
@@ -49,7 +49,7 @@ blogSchema.post('findOneAndDelete', async function (doc){
   if (doc) {
       await Comment.deleteMany({
           _id:{
-              $in: doc.reviews
+              $in: doc.comments
           }
       })
   }
