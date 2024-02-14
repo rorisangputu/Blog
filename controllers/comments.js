@@ -17,5 +17,5 @@ module.exports.deleteComment = async (req, res) => {
     await Blog.findByIdAndUpdate(id, { $pull: { comments: commentId}})
     await Comment.findByIdAndDelete(commentId);
     req.flash('success', 'Deleted review');
-    res.redirect(`/campgrounds/${id}`)
+    res.redirect(`/blogs/${id}`)
 }

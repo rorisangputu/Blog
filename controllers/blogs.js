@@ -28,7 +28,11 @@ module.exports.createNewBlog = async(req ,res, next) =>{
 // get - '/blogs/:id'
 module.exports.showBlog = async (req, res) =>{
     const {id} = req.params;
-    const blog = await Blog.findById(id);
+    const blog = await Blog.findById(id).populate({
+        path: 'comments', //populating with comments
+        populate: {
+            path: 'author' //adding comment author
+        }})
     res.render('blogs/show', {blog})
 }
 

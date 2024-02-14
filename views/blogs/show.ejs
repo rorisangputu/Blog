@@ -19,4 +19,38 @@
             </form>
         </div>
     </div>
+<% } %>
+
+    <% if (currentUser) {%>
+        <h2>Leave a review</h2>
+        <form action="/blogs/<%= blog._id %>/comments" method="POST" novalidate class="mb-3 validated-form">
+            
+            <div class="mb-3">
+                <label class="form-label" for="body">Comment</label>
+                <textarea class="form-control" name="comment[body]" id="body" cols="30" rows="3" required ></textarea>
+                <div class="valid-feedback">
+                    Looks good! 
+                </div>
+                <div class="invalid-feedback">
+                    Review is required
+                </div>
+            </div>
+            <button class="btn btn-success">Submit</button>
+        </form>
+        <hr>
     <% } %>
+
+    <% for (let comment of blog.comments) { %>
+        <div class="card mb-3">
+            <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted"><%=  comment.author.username %></h6>
+                <p class="card-text"><%= comment.body %></p>
+                <% if(currentUser && comment.author.equals(currentUser)) {%>
+                <form action="/blogs/<%= blog._id %>/comments/<%= comment._id  %>?_method=DELETE" method="POST">
+                <button class="btn btn-danger">Delete</button></form>
+                <% } %>
+            </div>
+        </div>
+    <% } %>
+       
+     

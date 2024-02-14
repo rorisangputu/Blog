@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate'); //For boilerplate template
 const session = require('express-session');
 const flash = require('connect-flash');
+const ExpressError = require('./Utils/ExpressError');
 const methodOverride = require('method-override');
 const passport = require('passport'); //User creation
 const LocalStrategy = require('passport-local');
@@ -15,6 +16,7 @@ const User = require('./models/user');
 const blogRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/users')
 const adminRoutes = require('./routes/admin');
+const commentRoutes = require('./routes/comments')
 
 
 //Database connection string
@@ -74,6 +76,7 @@ app.use((req, res, next) =>{
 app.use('/blogs', blogRoutes);
 app.use('/', adminRoutes);
 app.use('/', userRoutes);
+app.use('/blogs/:id/comments', commentRoutes);
 
 
 

@@ -22,10 +22,12 @@ const blogSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    comments: {
-      type: Schema.Types.ObjectId,
-      ref: 'Comment'
-    }
+    comments: [
+        {
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+        }
+    ]
 })
 
 // Middleware to automatically update the formattedDate field before saving
