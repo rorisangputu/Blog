@@ -5,9 +5,9 @@
 <section class="content-container">
   <div class="mb-3">
     <h1>Blogs:</h1>
-    
+    <% if (currentUser && currentUser.isAdmin === true) {%>
     <a class="btn btn-primary" href="/blogs/new">Add Blog</a>
-    
+    <% } %>
   </div>
   
     <% for(let blog of blogs){ %>

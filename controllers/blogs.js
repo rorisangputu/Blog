@@ -1,4 +1,5 @@
 const Blog = require('../models/blog'); //Blog model
+const User = require('../models/user');
 
 
 
@@ -12,9 +13,7 @@ module.exports.index =  async (req, res) => {
 
 // get - '/blogs/new', 
 module.exports.newBlog = (req, res) => {
-    const isAdmin = req.user && req.user.isAdmin;
-    console.log(req.params);
-    res.render('blogs/new', {isAdmin})
+    res.render('blogs/new', { currentUser: req.user })
 }
 
 //post - '/blogs'

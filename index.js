@@ -14,6 +14,7 @@ const User = require('./models/user');
 //Route Files
 const blogRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/users')
+const adminRoutes = require('./routes/admin');
 
 
 //Database connection string
@@ -63,7 +64,7 @@ passport.deserializeUser(User.deserializeUser());
 app.use((req, res, next) =>{
     //console.log(req.session)
     res.locals.currentUser = req.user;
-    console.log(req.user);
+    //console.log(req.user);
     res.locals.success = req.flash('success');
     res.locals.error = req.flash('error')
     next();
@@ -71,6 +72,7 @@ app.use((req, res, next) =>{
 
 //Routes
 app.use('/blogs', blogRoutes);
+app.use('/', adminRoutes);
 app.use('/', userRoutes);
 
 
