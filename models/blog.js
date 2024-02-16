@@ -27,7 +27,11 @@ const blogSchema = new Schema ({
         type: Schema.Types.ObjectId,
         ref: 'Comment'
         }
-    ]
+    ],
+    featured: {
+        type: Boolean,
+        default: false
+    }
 })
 
 // Middleware to automatically update the formattedDate field before saving

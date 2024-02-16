@@ -19,11 +19,34 @@ module.exports.newBlog = (req, res) => {
 //post - '/blogs'
 module.exports.createNewBlog = async(req ,res, next) =>{
     const blog = new Blog(req.body);
+    blog.featured = req.body.featured;
     blog.author = req.user._id
-    console.log(blog.author);
+    //console.log(blog.featured);
+    //res.send(blog);
     await blog.save();
     res.redirect('/blogs');
 }
+
+// module.exports.createNewBlog = async (req, res, next) => {
+//     // Create a new instance of the Blog model using data from the request body
+//     const blogData = req.body;
+//     const blog = new Blog(blogData);
+    
+//     // Set the author of the blog post to the ID of the current user
+//     blog.author = req.user._id;
+
+//     // Set the featured property based on the value sent from the form
+//     blog.featured = (req.body.featured === 'true'); // Convert string 'true'/'false' to boolean
+    
+//     // Log the author ID to the console (optional, for debugging purposes)
+//     console.log(blog.author);
+    
+//     // Save the newly created blog post to the database
+//     await blog.save();
+    
+//     // Redirect the user to the '/blogs' route after successfully creating the blog post
+//     res.redirect('/blogs');
+// }
 
 // get - '/blogs/:id'
 module.exports.showBlog = async (req, res) =>{
