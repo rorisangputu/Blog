@@ -158,6 +158,8 @@ section {
 
 .section-container {
   display: flex;
+  /* border: solid 1px red; */
+  justify-content: center;
 }
 
 /* PROFILE SECTION */
@@ -174,6 +176,11 @@ section {
   height: 400px;
   width: 400px;
   margin: auto 0;
+}
+
+#profile .section__pic-container img{
+  /* border: red solid 1px; */
+  border-radius: 200px;
 }
 
 .section__text {
@@ -320,6 +327,10 @@ section {
   height: 400px;
   width: 400px;
   margin: auto 0;
+}
+.text-container{
+  /* border: solid blue 2px; */
+  width: 40vw;
 }
 
 /* EXPERIENCE SECTION */
