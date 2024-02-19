@@ -16,3 +16,16 @@ Express-session: A middleware for Express.js that manages sessions.
 Connect-flash: A middleware to store messages that are only displayed once, typically after a form submission.
 Passport.js: An authentication middleware for Node.js, supporting various authentication mechanisms.
 Express-mongo-sanitize: A middleware to prevent MongoDB Operator Injection.
+
+How to use it: 
+
+Sign up
+ - Sign up using a username, email and password.
+  You will have access to the website and have the ability to comment on posts. 
+Log In
+  - You will be able to access the blog site in the future with the same credentials you signed up with, remember them!
+Comments
+  - Only registered users can comment on posts.
+  - Users have the ability to create and delete their own comments from a post.
+Log Out
+  - Users can logout.
