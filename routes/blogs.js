@@ -4,9 +4,13 @@ const catchAsync = require('../Utils/catchAsync');
 const ExpressError = require('../Utils/ExpressError');
 const blogs = require('../controllers/blogs');
 
+const multer = require('multer');
+const { storage } = require('../cloudinary');
+const upload = multer({ storage });
+
 router.route('/')
     .get(catchAsync(blogs.index))
-    .post(catchAsync(blogs.createNewBlog));
+    .post(upload.array('image'), catchAsync(blogs.createNewBlog));
 
 router.route('/new')
     .get( blogs.newBlog)

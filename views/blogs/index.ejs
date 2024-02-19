@@ -16,14 +16,16 @@
         <% for(let blog of blogs){ %>
               <div class="card mb-3 mt-3" style="max-width: 440px;" > 
                 <div class="row g-0">
-                  <% if (blog.image) {%>
                   <div class="col-md-5">
-                    <img src="<%= blog.image %>" class="img-fluid rounded-start h-100" style="object-fit: cover;" alt="...">
+                    <% if(blog.images.length) {%>
+                      <img src="<%= blog.images[0].url %>" alt="" class="img-fluid rounded-start h-100" style="object-fit: cover;">
+                      <% }else { %>
+                          <img src="https://res-console.cloudinary.com/dslkrakk7/media_explorer_thumbnails/ca74f628ccde225f609c686ab4b4bde0/detailed" alt="" class="img-fluid">
+                      <% } %>                  
                   </div>
-                  <% } %>
                   <div class="col-md-7">
                     <div class="card-body">
-                      <h5 class="card-title"><%= blog.title %></h5>
+                       <h5 class="card-title"><%= blog.title %></h5>
                       <p class="card-text"></p>
                       <p class="card-text"><small class="text-body-secondary"><%= blog.formattedDate %></small></p>
                       <a class="btn btn-primary" href="/blogs/<%= blog._id %>">View</a>

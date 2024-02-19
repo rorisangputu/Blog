@@ -1,4 +1,5 @@
 const Blog = require('../models/blog'); //Blog model
+const {cloudinary} = require('../cloudinary');
 const User = require('../models/user');
 
 
@@ -19,11 +20,12 @@ module.exports.newBlog = (req, res) => {
 //post - '/blogs'
 module.exports.createNewBlog = async(req ,res, next) =>{
     const blog = new Blog(req.body);
+    blog.images = req.files.map(f => ({ url: f.path, filename: f.filename }));
     blog.featured = req.body.featured;
-    blog.author = req.user._id
-    //console.log(blog.featured);
+    blog.author = req.user._id;
     //res.send(blog);
     await blog.save();
+    console.log(blog);
     res.redirect('/blogs');
 }
 
@@ -70,6 +72,7 @@ module.exports.editBlog = async (req, res) =>{
 module.exports.updateBlog = async(req, res) => {
     const {id} = req.params;
     const blog = await Blog.findByIdAndUpdate(id, req.body, {runValidators: true, new: true})
+    //const imgs = req.files.map(f => ({ url: f.path, filename: f.filename })); 
     res.redirect(`/blogs/${blog._id}`)
 }
 

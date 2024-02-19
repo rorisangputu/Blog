@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV !== "production"){
+    require('dotenv').config();
+}
+
 const express = require('express');
 const app = express();
 const path = require('path');
@@ -10,6 +14,8 @@ const methodOverride = require('method-override');
 const passport = require('passport'); //User creation
 const LocalStrategy = require('passport-local');
 const User = require('./models/user');
+const mongoSanitize = require('express-mongo-sanitize');
+const MongoStore  = require('connect-mongo');
 
 
 //Route Files
@@ -17,10 +23,10 @@ const blogRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/users')
 const adminRoutes = require('./routes/admin');
 const commentRoutes = require('./routes/comments')
-
+const dbUrl = 'mongodb://127.0.0.1:27017/blog'
 
 //Database connection string
-mongoose.connect('mongodb://127.0.0.1:27017/blog')
+mongoose.connect(dbUrl)
 .then(() =>{
     console.log("MONGO CONNECTION OPEN")
 })
@@ -37,10 +43,24 @@ app.set('view engine', 'ejs');
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(mongoSanitize()); 
+
+
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    touchAfter: 24 * 60 * 60,
+    crypto: {
+        secret: 'thisshouldbeabettersecret!'
+    }
+});
+
+store.on("error", function(e){
+    console.log("SESSION STORE ERROR", e)
+})
 
 //SESSIONS
 const sessionConfig = { //defines the configuration options for the session middleware.
-    //store,
+    store,
     name: 'session',
     secret: 'thisisasecret', 
     resave: false,
