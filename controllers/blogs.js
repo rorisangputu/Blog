@@ -25,7 +25,7 @@ module.exports.createNewBlog = async(req ,res, next) =>{
     blog.author = req.user._id;
     //res.send(blog);
     await blog.save();
-    console.log(blog);
+    //console.log(blog);
     res.redirect('/blogs');
 }
 
