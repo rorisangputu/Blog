@@ -1,0 +1,18 @@
+
+This is my portfolio blog, a personal website developed to showcase my software development skills by allowing users to sign up, login and read blogs penned by myself. It serves as a platform to share my thoughts, experiences, and expertise on different subjects related to software development and tech.
+
+This portfolio blog is built using Node.js along with Express.js as the web application framework. It employs MongoDB as the database to store blog content and user information. The backend is structured with the Model-View-Controller (MVC) pattern for better organization and scalability.
+
+The frontend is rendered using the EJS (Embedded JavaScript) templating engine, allowing for dynamic content generation and seamless integration of data from the backend. CSS is utilized for styling, ensuring an aesthetically pleasing and user-friendly interface.
+
+Tools Used:
+
+Node.js: A JavaScript runtime environment used for building scalable network applications.
+Express.js: A minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
+MongoDB: A NoSQL database program, using JSON-like documents with optional schemas.
+Mongoose: An Object Data Modeling (ODM) library for MongoDB and Node.js.
+EJS-Mate: A boilerplate template for EJS, facilitating template reuse and modularity.
+Express-session: A middleware for Express.js that manages sessions.
+Connect-flash: A middleware to store messages that are only displayed once, typically after a form submission.
+Passport.js: An authentication middleware for Node.js, supporting various authentication mechanisms.
+Express-mongo-sanitize: A middleware to prevent MongoDB Operator Injection.
