@@ -23,10 +23,11 @@ const blogRoutes = require('./routes/blogs');
 const userRoutes = require('./routes/users')
 const adminRoutes = require('./routes/admin');
 const commentRoutes = require('./routes/comments')
-const dbUrl = 'mongodb://127.0.0.1:27017/blog'
+//const dbUrl = 'mongodb://127.0.0.1:27017/blog'
 
+const db_URL = process.env.DB_URL;
 //Database connection string
-mongoose.connect(dbUrl)
+mongoose.connect(db_URL)
 .then(() =>{
     console.log("MONGO CONNECTION OPEN")
 })
@@ -47,7 +48,7 @@ app.use(mongoSanitize());
 
 
 const store = MongoStore.create({
-    mongoUrl: dbUrl,
+    mongoUrl: db_URL,
     touchAfter: 24 * 60 * 60,
     crypto: {
         secret: 'thisshouldbeabettersecret!'

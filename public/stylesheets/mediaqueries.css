@@ -3,6 +3,10 @@
       height: 83vh;
       margin-bottom: 6rem;
     }
+
+    #profile .title{
+      width: 100%;
+    }
     .about-containers {
       flex-wrap: wrap;
     }
