@@ -1,16 +1,18 @@
 <% layout('layouts/boilerplate') %>
-<div class="col-md-5">
-    <% if(blog.images.length) {%>
-      <img src="<%= blog.images[0].url %>" alt="" class="img-fluid">
-      <% }else { %>
-          <img src="https://res-console.cloudinary.com/dslkrakk7/media_explorer_thumbnails/ca74f628ccde225f609c686ab4b4bde0/detailed" alt="" class="img-fluid">
-      <% } %>                  
+<div class="img-container">
+    <div class="col-md-5 blog-img">
+        <% if(blog.images.length) {%>
+          <img src="<%= blog.images[0].url %>" alt="" class="img-fluid cover-image">
+          <% }else { %>
+              <img src="https://res-console.cloudinary.com/dslkrakk7/media_explorer_thumbnails/ca74f628ccde225f609c686ab4b4bde0/detailed" alt="" class="img-fluid">
+          <% } %>                  
+    </div>
 </div>
-<h1><%= blog.title %></h1>
-<h6 class="text-muted"><%= blog.formattedDate %></h6>
+<h1 class="mt-4"><%= blog.title %></h1>
+<h6 class="text-muted"><%= blog.author %></h6>
     <!-- //blog.content %> -->
 <p class="mt-4 mb-4" style="white-space: pre-line;" ><%= blog.content %></p>
-
+<h6 class="text-muted mt-4 mb-4"><%= blog.formattedDate %></h6>
 
 <% if (currentUser && currentUser.isAdmin === true) {%>
     <div class="buttons">

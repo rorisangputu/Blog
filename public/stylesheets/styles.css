@@ -1,3 +1,9 @@
+body{
+    height: 100vh;
+}
+
+
+
 .navbar{
     /* border: solid 1px red; */
 }
@@ -32,9 +38,31 @@
     /* border: solid 2px red; */
     width: 60%;
 }
+.img-container{
+    /* border: blue 2px solid; */
+    position: relative;
+    width: 100%; /* Ensure the container takes full width */
+    height: 0; /* Set initial height to 0 to maintain aspect ratio */
+    padding-bottom: 35%;   /* Aspect ratio (9:16) */
+}
+
 
 .blog-img{
-    background-image: url();
+    /* border: solid 2px red; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    
+}
+
+.blog-img img {
+    width: 100%; /* Cover the entirety of the container */
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container */
+    object-position: center;
 }
 
 .buttons{
@@ -43,4 +71,8 @@
     justify-content: space-between;
     /* border: 1px red solid; */
     width: 20%
+}
+
+.footer{
+    margin-top: 21vh;
 }
