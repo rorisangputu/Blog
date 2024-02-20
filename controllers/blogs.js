@@ -57,7 +57,7 @@ module.exports.showBlog = async (req, res) =>{
         path: 'comments', //populating with comments
         populate: {
             path: 'author' //adding comment author
-        }})
+        }}).populate('author')
     res.render('blogs/show', {blog})
 }
 
